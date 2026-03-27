@@ -1,12 +1,14 @@
 package com.example.First.REST.API;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
+
+    @GetMapping("/hello/{name}")
+    public HelloResponse helloParam(@PathVariable String name){ // we can make dynamic URLs using @PathVariable
+        return new HelloResponse("Hello "+ name);
+    }
 
     @GetMapping("/hello")
     public HelloResponse hello(){
